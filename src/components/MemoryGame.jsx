@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
+import "../App.css";
 import "./MemoryGame.css";
 import _ from "lodash";
+import GameBoard from "./GameBoard";
+import WinModal from "./WinModal";
 
 const MemoryGame = ({ images }) => {
   const [imageArr, setImageArr] = useState([]);
   const [selectedImgs, setSelectedImgs] = useState([]);
   const [matched, setMatched] = useState([]);
-  const [blockBoard, setBloackBoard] = useState(false);
+  const [blockBoard, setBlockBoard] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   function click(image, index) {
     if (
@@ -19,21 +23,28 @@ const MemoryGame = ({ images }) => {
     setSelectedImgs(selection);
 
     if (selection.length === 2) {
-      setBloackBoard(true);
+      setBlockBoard(true);
 
       if (selection[0].image === selection[1].image) {
         setMatched(prev => [...prev, selection[0].image]);
         setTimeout(() => {
-          setBloackBoard(false);
+          setBlockBoard(false);
           setSelectedImgs([]);
         }, 500);
       } else {
         setTimeout(() => {
-          setBloackBoard(false);
+          setBlockBoard(false);
           setSelectedImgs([]);
         }, 500);
       }
     };
+  };
+
+  function reset() {
+    setShowModal(false);
+    setImageArr(_.shuffle([...images, ...images]));
+    setMatched([]);
+    setSelectedImgs([]);
   };
 
   useEffect(() => {
@@ -43,50 +54,36 @@ const MemoryGame = ({ images }) => {
   useEffect(() => {
   if (matched.length === images.length) {
     setTimeout(() => {
-      alert("YOU WIN!");
-      setMatched([]);
-      setSelectedImgs([]);
-      setImageArr(_.shuffle([...images, ...images]));
+      setShowModal(true);
     }, 300);
   }
 }, [matched, images]);
 
   return (
-    <div className="main-wrapper">
-      <header className="app-header">
-        <h1>Memory Game</h1>
-      </header>
-      <div className="game-wrapper">
-        <div className="game-board">
-          {
-            selectedImgs && imageArr.map((image, index) => (
-              <img
-                key={index}
-                src={
-                  selectedImgs.find(i => i.index === index) || 
-                  matched.includes(image)
-                    ? image
-                    : ""
-                }
-                style={{ 
-                  width: "250px", 
-                  height: "250px", 
-                  padding: "10px",
-                  backgroundColor: selectedImgs.find((i) => index === i.index) || 
-                  matched.includes(image) ? "white" : "gray",
-                }}
-                onClick={
-                  selectedImgs.find(i => i.index === index) || 
-                  matched.includes(image) || blockBoard
-                    ? undefined
-                    : () => click(image, index)
-                }
-              />
-            ))
-          }
-        </div>
+    <>
+      {
+        showModal &&
+        <WinModal reset={reset} />
+      }
+      <div className="main-wrapper">
+        <header className="app-header">
+          <h1>Memory Game</h1>
+        </header>
+        <GameBoard 
+          imageArr={imageArr}
+          selectedImgs={selectedImgs}
+          matched={matched}
+          blockBoard={blockBoard}
+          click={click}
+        />
+        <button
+          className="btn" 
+          onClick={() => reset()}
+        >
+          Reset
+        </button>
       </div>
-    </div>
+    </>
   );
 };
 
