@@ -1,0 +1,25 @@
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.app-header {
+  height: 20vh;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.game-wrapper {
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
