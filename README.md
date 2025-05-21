@@ -1,18 +1,22 @@
-# Build a memory game
+# "Build a memory game" for the "React Practice Calendar" challenge by reactpractice.dev 
 
-> This repository is the companion to the ["Build a memory game"](https://reactpractice.dev/exercise/build-a-memory-game/?utm_source=github&utm_medium=social&utm_campaign=memory-game) practice exercise.
+Made by **roznerx** (ignaciorosner@gmail.com)
 
-Build a memory game in React.
+- Fourth day of the calendar, this time doing this fun memory game
+- I loved doing the logic for the game board: went through many options before the final version, trimming doing conditional until I came up with a solution I liked
+- Copied the main branch of the repo provided by the challenge, because the original had a solution in another branch and I didn't want to get tempted into looking into it!
+- Have two branches besides main: ```initial-solution``` and ```refactor```; the first one is what the project looked like once finished, while the second one expands upon the first with a cleanr code by making components and trimming down repetition, plus adding some extras like a modal when winning and a reset button!  
 
-You start with 6 images that you will display as 12 cards. By default, they are "flipped" - you only get a placeholder instead of the image.
+*Link to the challenge:* https://reactpractice.dev/start-here/ 
 
-As the user clicks a "card", flip it around, revealing the image.
-When the user clicks the same picture twice, in a row, then it means he has a match - so keep the images visible from then onwards.
+*Link to the exercise:* https://reactpractice.dev/exercise/build-a-public-holidays-app/?utm_source=calendar.reactpractice.dev&utm_medium=social&utm_campaign=calendar-v1
 
-To get started, you can clone this starter repo.
-When you're ready to check your work, check out [the official solution](https://reactpractice.dev/solution/how-to-build-a-memory-game/?utm_source=github&utm_medium=social&utm_campaign=memory-game).
+**NOTE:** had a lot of fun with it, even thought I had to write down the game's logic while I was coding it! It is simple, yet required a little bit of planning!
 
-## Getting started:
+## Screenshots:
 
-- `npm install`
-- `npm run dev`
+![imagen](https://github.com/user-attachments/assets/e7630af1-005e-4855-af30-60f03c550f7a)
+![imagen](https://github.com/user-attachments/assets/3263ec2c-5a4f-474b-9096-cdb18ee2b616)
+![imagen](https://github.com/user-attachments/assets/d309ee01-991a-4d8f-977a-36de4e734a69)
+![imagen](https://github.com/user-attachments/assets/40e30299-4e8e-4247-847a-90d0fd5ab094)
+![imagen](https://github.com/user-attachments/assets/534ffad0-f031-462e-9bf7-960316facdbd)
