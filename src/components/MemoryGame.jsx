@@ -76,7 +76,8 @@ const MemoryGame = ({ images }) => {
                   matched.includes(image) ? "white" : "gray",
                 }}
                 onClick={
-                  selectedImgs.find(i => i.index === index) || matched.includes(image) || blockBoard
+                  selectedImgs.find(i => i.index === index) || 
+                  matched.includes(image) || blockBoard
                     ? undefined
                     : () => click(image, index)
                 }
